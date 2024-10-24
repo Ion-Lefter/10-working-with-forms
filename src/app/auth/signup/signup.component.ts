@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -28,7 +28,7 @@ export class SignupComponent {
 
     firstName: new FormControl('', {validators: [Validators.required]}),
     lastName: new FormControl('', {validators: [Validators.required]}),
-    adsress: new FormGroup({
+    address: new FormGroup({
       street: new FormControl('', {validators: [Validators.required]}),
       number: new FormControl('', {validators: [Validators.required]}),
       postalCode: new FormControl('', {validators: [Validators.required]}),
@@ -37,6 +37,13 @@ export class SignupComponent {
 
     role: new FormControl<'student' | 'teacher' | 'employee' | 'founder' | 'other'>('employee', 
       {validators: [Validators.required]}),
+    
+    source: new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+    ]),
+
     agree: new FormControl(false, {validators: [Validators.required]})
 
   });
