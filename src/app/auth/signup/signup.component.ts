@@ -17,18 +17,24 @@ export class SignupComponent {
       ],
 
     }),
-    password: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(6)],
+    passwords: new FormGroup({
+      password: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(6)],
+      }),
+      confirmPassword: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(6)],
+      }),
     }),
-    confirmPassword: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(6)],
-    }),
+
     firstName: new FormControl('', {validators: [Validators.required]}),
     lastName: new FormControl('', {validators: [Validators.required]}),
-    street: new FormControl('', {validators: [Validators.required]}),
-    number: new FormControl('', {validators: [Validators.required]}),
-    postalCode: new FormControl('', {validators: [Validators.required]}),
-    city: new FormControl('', {validators: [Validators.required]}),
+    adsress: new FormGroup({
+      street: new FormControl('', {validators: [Validators.required]}),
+      number: new FormControl('', {validators: [Validators.required]}),
+      postalCode: new FormControl('', {validators: [Validators.required]}),
+      city: new FormControl('', {validators: [Validators.required]}),
+    }),
+
     role: new FormControl<'student' | 'teacher' | 'employee' | 'founder' | 'other'>('employee', 
       {validators: [Validators.required]}),
     agree: new FormControl(false, {validators: [Validators.required]})
@@ -37,15 +43,16 @@ export class SignupComponent {
 
   onSubmit(){
     const enteredEmail = this.mySignupForm.value.email;
-    const enteredPassword = this.mySignupForm.value.password;
-    console.log(enteredEmail, enteredPassword);
+    // const enteredPassword = this.mySignupForm.value.password;
+    // console.log(enteredEmail, enteredPassword);
+    console.log(this.mySignupForm)
   }
 
   onReset(){
-    this.mySignupForm.reset();
+
     const enteredEmail = this.mySignupForm.value.email;
-    const enteredPassword = this.mySignupForm.value.password;
-    console.log(enteredEmail, enteredPassword);
-    console.log()
+    //const enteredPassword = this.mySignupForm.value.password;
+    //console.log(enteredEmail, enteredPassword);
+    console.log(this.mySignupForm)
   }
 }
